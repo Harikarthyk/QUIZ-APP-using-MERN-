@@ -4,6 +4,7 @@
 	box-shadow: 1px 3px 0px 1px #9c9191;
 	align-items: center;
 	border-radius: 10px;
+	font-family: poppins;
 	padding: 15px;
 	margin-top: 25px;
 }
@@ -12,6 +13,7 @@
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: space-around;
+	font-family: poppins;
 	margin: 15px 0;
 }
 
@@ -21,6 +23,7 @@
 }
 .question__code {
 	width: 100%;
+	font-family: poppins;
 }
 .question__header {
 	padding: 15px;

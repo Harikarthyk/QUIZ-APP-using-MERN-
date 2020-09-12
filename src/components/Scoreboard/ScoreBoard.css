@@ -4,12 +4,14 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	font-family: poppins;
 	border-radius: 7px;
 	box-shadow: 1px 1px 1px 1px grey;
 }
 
 .socreboard__header {
 	padding: 15px;
+	font-family: poppins;
 	background-color: snow;
 	/* width: 100%; */
 	text-align: center;
