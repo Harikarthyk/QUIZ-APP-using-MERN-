@@ -15,7 +15,7 @@ function Category() {
 	const [loading, setLoading] = useState(true);
 	const [ans, setAns] = useState([]);
 	const [viewScoreboard, setViewScoreBoard] = useState(false);
-	const [viewQuestion, setViewQuestion] = useState(true);
+	const [time, setTime] = useState(0);
 	const [scoreBoard, setScoreBoard] = useState({
 		Correct: 0,
 		Wrong: 0,
@@ -26,6 +26,12 @@ function Category() {
 		preloadCateogry(categoryId);
 		preloadQuestion(categoryId);
 	}, []);
+	useEffect(() => {
+		if (!viewScoreboard)
+			setTimeout(() => {
+				setTime(time + 1);
+			}, 1000);
+	}, [time]);
 	const preloadCateogry = async (categoryId) => {
 		await getCategoryById(categoryId)
 			.then((response) => {
@@ -68,6 +74,16 @@ function Category() {
 		setViewScoreBoard(true);
 		setViewIndex(0);
 	};
+	const timer = () => {
+		var timestamp = time;
+		var hours = Math.floor(timestamp / 60 / 60);
+		var minutes = Math.floor(timestamp / 60) - hours * 60;
+		var seconds = timestamp % 60;
+		if (hours <= 9) hours = '0' + hours;
+		if (minutes <= 9) minutes = '0' + minutes;
+		if (seconds <= 9) seconds = '0' + seconds;
+		return `${hours}:${minutes}:${seconds} `;
+	};
 	return (
 		<div className="category">
 			<div
@@ -85,7 +101,7 @@ function Category() {
 					</div>
 					<div className="category__headerTitleText">{category.name}</div>
 				</div>
-				<div className="category__headeTimer">Time : 00:00:01</div>
+				<div className="category__headeTimer">{timer()}</div>
 			</div>
 			<div className="category__loading">
 				{loading ? (
@@ -100,67 +116,65 @@ function Category() {
 					wrong={scoreBoard.Wrong}
 					skip={scoreBoard.Skipped}
 					color={category.bgColor}
+					time={timer()}
+					sec={time}
 				/>
 			) : (
 				''
 			)}
-			{viewQuestion ? (
-				<React.Fragment>
-					<div>
-						{questions.map((question, index) => {
-							if (index === viewIndex)
-								return (
-									<Question
-										key={question._id}
-										category={category.name.toLowerCase()}
-										question={question}
-										index={index}
-										color={category.bgColor}
-										ans={ans}
-										setAns={setAns}
-										viewScoreboard={viewScoreboard}
-									/>
-								);
-						})}
-					</div>
-					<div className="category__questionToggle">
-						{viewIndex >= 1 ? (
-							<div
-								className="category__togglePre"
-								onClick={() => {
-									if (viewIndex >= 1) setViewIndex(viewIndex - 1);
-								}}
-							>
-								<FaHandPointLeft />
-							</div>
-						) : (
-							''
-						)}
-						{questions.length - 2 !== viewIndex ? (
-							<div
-								onClick={() => {
-									if (viewIndex + 1 <= questions.length - 1)
-										setViewIndex(viewIndex + 1);
-								}}
-								className="category__toggleNext"
-							>
-								<FaHandPointRight />
-							</div>
-						) : (
-							''
-						)}
-						{questions.length - 2 === viewIndex && !viewScoreboard ? (
-							<div className="category__toggleNext" onClick={handleValidation}>
-								Submit
-							</div>
-						) : (
-							''
-						)}
-					</div>
-				</React.Fragment>
-			) : (
-				''
-			)}
+			<React.Fragment>
+				<div>
+					{questions.map((question, index) => {
+						if (index === viewIndex)
+							return (
+								<Question
+									key={question._id}
+									category={category.name.toLowerCase()}
+									question={question}
+									index={index}
+									color={category.bgColor}
+									ans={ans}
+									setAns={setAns}
+									viewScoreboard={viewScoreboard}
+								/>
+							);
+					})}
+				</div>
+				<div className="category__questionToggle">
+					{viewIndex >= 1 ? (
+						<div
+							className="category__togglePre"
+							onClick={() => {
+								if (viewIndex >= 1) setViewIndex(viewIndex - 1);
+							}}
+						>
+							<FaHandPointLeft />
+						</div>
+					) : (
+						''
+					)}
+					{questions.length - 2 !== viewIndex ? (
+						<div
+							onClick={() => {
+								if (viewIndex + 1 <= questions.length - 1)
+									setViewIndex(viewIndex + 1);
+							}}
+							className="category__toggleNext"
+						>
+							<FaHandPointRight />
+						</div>
+					) : (
+						''
+					)}
+					{questions.length - 2 === viewIndex && !viewScoreboard ? (
+						<div className="category__toggleNext" onClick={handleValidation}>
+							Submit
+						</div>
+					) : (
+						''
+					)}
+				</div>
+			</React.Fragment>
 		</div>
 	);
 }

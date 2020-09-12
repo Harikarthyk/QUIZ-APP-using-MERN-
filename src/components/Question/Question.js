@@ -41,7 +41,7 @@ function Question({
 			{!viewScoreboard ? (
 				<div className="question__option">
 					{question.options.map((option, optionIndex) => (
-						<div className="question__optionValue">
+						<div key={optionIndex} className="question__optionValue">
 							<input
 								type="radio"
 								name={question._id}
@@ -53,7 +53,7 @@ function Question({
 								}}
 								value={option}
 							/>
-							<label for={option}>{option}</label>
+							<label htmlfor={option}>{option}</label>
 						</div>
 					))}
 				</div>
