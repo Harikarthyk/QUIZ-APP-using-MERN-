@@ -1,0 +1,87 @@
+.form_category {
+	width: 100%;
+}
+
+input[type='text'] {
+	width: 60%;
+	padding: 8px;
+	margin: 5px 0px;
+	border-radius: 5px;
+	border: none;
+	border-bottom: 1px solid;
+}
+
+.form_question {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 0px;
+}
+label {
+	margin-right: 15px;
+}
+
+textarea {
+	width: 100%;
+	height: 100px;
+}
+
+.form_code {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 0px;
+}
+
+.form_explaination {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 0px;
+}
+
+.form_ans input[type='number'] {
+	width: 60%;
+	padding: 8px;
+	margin: 10px 0;
+}
+.form_button button {
+	padding: 10px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 10px;
+	background-color: indianred;
+	color: white;
+}
+.body_question_code {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.addques {
+	margin: auto;
+	width: 70%;
+	text-align: center;
+}
+.addques_container {
+	background: #fff0c4;
+	padding: 15px;
+}
+.addques_header {
+	margin: 20px 0;
+}
+.addques_sucess {
+	padding: 10px;
+	background: green;
+	color: white;
+	border-radius: 10px;
+}
+.addques_error {
+	padding: 10px;
+	background: red;
+	color: white;
+	border-radius: 10px;
+}

@@ -5,7 +5,6 @@ function ScoreBoard({ correct, wrong, skip, color, time, sec }) {
 		var timestamp = Math.round(
 			(parseInt(correct) + parseInt(wrong) + parseInt(skip)) / parseInt(sec),
 		);
-		alert(timestamp);
 		var hours = Math.floor(timestamp / 60 / 60);
 		var minutes = Math.floor(timestamp / 60) - hours * 60;
 		var seconds = timestamp % 60;
@@ -26,9 +25,9 @@ function ScoreBoard({ correct, wrong, skip, color, time, sec }) {
 				<div className="scoreboard__option">
 					⏰ Total Time Taken : {time} sec
 				</div>
-				<div className="scoreboard__option">
+				{/* <div className="scoreboard__option">
 					Average Time Taken for one Question : {avgTime()}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

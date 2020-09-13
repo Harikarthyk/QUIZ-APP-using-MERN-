@@ -13,7 +13,16 @@
 	justify-content: space-evenly;
 	align-items: center;
 }
-
+.category__headerQuit {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+.category__headeTimer {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
 .category__headerTitle {
 	display: flex;
 	flex-direction: column;
