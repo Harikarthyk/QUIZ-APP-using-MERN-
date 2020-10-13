@@ -24,7 +24,7 @@ label {
 
 textarea {
 	width: 100%;
-	height: 100px;
+	height: 210px;
 }
 
 .form_code {
@@ -72,6 +72,10 @@ textarea {
 }
 .addques_header {
 	margin: 20px 0;
+	padding: 10px;
+	background: #d4cb7c;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 20px;
+	border-radius: 10px;
 }
 .addques_sucess {
 	padding: 10px;

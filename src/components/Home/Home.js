@@ -54,6 +54,9 @@ function Home() {
 					</Link>
 				))}
 			</div>
+			<Link className="home__body__addQuestion" to="/addquestion">
+				<button>Add Question</button>
+			</Link>
 		</div>
 	);
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { addQuestion, getAllCategory } from '../../helper/helper';
 import './AddQuestion.css';
 
@@ -8,6 +9,7 @@ function AddQuestion() {
 		error: '',
 		message: '',
 	});
+	const [redirect, setRedirect] = useState(false);
 	const [input, setInput] = useState({
 		category: '',
 		question: '',
@@ -23,8 +25,11 @@ function AddQuestion() {
 		option3: '',
 	});
 	useEffect(() => {
+		var password = window.prompt('Enter password: ');
+		if (password != 'qwerty') setRedirect(true);
 		preloadAllCategories();
 	}, []);
+	if (redirect) return <Redirect to="/" />;
 	const preloadAllCategories = async () => {
 		await getAllCategory().then((response) => {
 			if (response.error) {
