@@ -58,6 +58,7 @@ function Category() {
 			.catch((error) => console.error(error));
 	};
 	const handleValidation = () => {
+		if (!window.confirm('Do you want to submit...')) return;
 		let newScoreBoard = { Correct: 0, Wrong: 0, Skipped: 0 };
 		for (let i = 0; i < ans.length; i++) {
 			if (ans[i] === -1) newScoreBoard.Skipped++;
